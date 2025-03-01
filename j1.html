@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
+  
+    <style>
+      h1{
+        text-align: center;
+        font-size: 50px;
+        margin-top: 0;
+      }
+      #draggable1,
+      #draggable2,
+      #draggable3,
+      #draggable4 {
+        width: 200px;
+        height: 180px;
+        float: left;
+      }
+      #droppable1,
+      #droppable2,
+      #droppable3,
+      #droppable4 {
+        width: 187px;
+        height: 170px;
+        padding: 0.5em;
+        float: left;
+        margin: 1px;
+        background-color: aqua;
+      }
+      .img1,
+      .img2,
+      .img3,
+      .img4 {
+        width: 150px;
+        height: 150px;
+        margin: 8px;
+        cursor: pointer;
+      }
+        .index{
+        height: 650px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+          } 
+
+          .index .img-part{
+          background-color: aqua;
+          height: 10px;
+         
+          }
+      
+
+        .droppy{
+          position: absolute;
+          top: 34%;
+        height: 45%;
+        width: 27%;
+          z-index: -1;
+        }
+        p{
+          font-size: 40px;
+        }
+        a{
+          text-decoration: none;
+          border: 1px solid black;
+          padding: 10px;
+          border-radius: 10px;
+          margin-left: 45%;
+          font-size: 30px;
+          color: black;
+          background-color: white;
+        }
+       
+    </style>
+  </head>
+  <body> 
+     <button>Light Mode</button>
+    <h1 id="head1">Let's play game</h1>
+    <div class="index">
+      <div id="img-part">
+        <img
+          src="set1.PNG"
+          alt=""
+          class="img1 ui-widget-content"
+          id="draggable1"
+        />
+        <img
+          src="set2.PNG"
+          alt=""
+          class="img2 ui-widget-content"
+          id="draggable2"
+        />
+        <img
+          src="set3.PNG"
+          alt=""
+          class="img3 ui-widget-content"
+          id="draggable3"
+        />
+        <img
+          src="set4.PNG"
+          alt=""
+          class="img4 ui-widget-content"
+          id="draggable4"
+        />
+      </div>
+
+      <div class="droppy">
+        <div id="droppable1" class="ui-widget-header">
+          <p>Drop here</p>
+        </div>
+        <div id="droppable2" class="ui-widget-header">
+          <p id="drop2">Drop here</p>
+        </div>
+        <div id="droppable3" class="ui-widget-header">
+          <p>Drop here</p>
+        </div>
+        <div id="droppable4" class="ui-widget-header">
+          <p>Drop here</p>
+        </div>
+      </div>
+      
+    </div>
+     <a href="j2.html">Next level</a>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script>
+    
+     $( function() {
+      // drag 1
+    $( "#draggable1" ).draggable({revert: "invalid"});
+    $( "#droppable1" ).droppable({
+      accept: "#draggable1",
+      classes: {
+        "ui-droppable-active": "ui-state-active",
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Correct" );
+      }
+    });
+
+
+    // drag 2
+    $("#draggable2").draggable({revert: "invalid"});
+    $("#droppable2").droppable({
+        accept: "#draggable2",
+        class: {
+            "ui-droppable-active": "ui-state-active",
+           "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Right" );
+      }
+    });
+
+
+    // drag 3
+    $( "#draggable3" ).draggable({revert: "invalid"});
+    $("#droppable3" ).droppable({
+        accept: "#draggable3",
+        class: {
+            "ui-droppable-active": "ui-state-active",
+           "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function(event, ui){
+            $(this)
+            .addClass( "ui-state-highlight" )
+            .find( "p" )
+            .html("Dropped!")
+        }
+        })
+
+
+        // drag 4
+        $( "#draggable4" ).draggable({revert: "invalid"});
+        $("#droppable4" ).droppable({
+        accept: "#draggable4",
+        class: {
+            "ui-droppable-active": "ui-state-active",
+           "ui-droppable-hover": "ui-state-hover"
+        },
+        drop: function(event, ui){
+            $(this)
+            .addClass( "ui-state-highlight" )
+            .find( "p" )
+            .html("correct")
+        }
+        });
+
+        
+
+
+  } );
+
+        // head function
+        var a = $("#head1")
+         a.click(function(){
+          $("#head1").html("Are you Ready")
+         })
+
+        //  main mode function 
+        var bdy = $("body")
+        var btn = $("button")
+        btn.click(function(){
+          a.css("color", "white")
+          btn.html("Dark mode")
+          bdy.css("background-color","#272727")
+        })
+
+
+
+
+ 
+
+    </script>
+  </body>
+</html>
